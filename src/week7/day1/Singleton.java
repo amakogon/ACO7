@@ -1,17 +1,24 @@
 package week7.day1;
 
-public class Singleton {
+import java.io.ObjectStreamException;
+import java.io.Serializable;
 
-  private static Singleton instance = null;
+public class Singleton implements Serializable {
 
-  private Singleton() {
-    System.out.println("instance created");
-  }
+    private static Singleton instance = new Singleton();
 
-  public static Singleton getInstance() {
-    if (instance == null) {
-      instance = new Singleton();
+    private Singleton() {
+        System.out.println("instance created");
     }
-    return instance;
-  }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+    private Object readResolve() throws ObjectStreamException {
+        return instance;
+    }
 }

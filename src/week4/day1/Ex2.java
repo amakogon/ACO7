@@ -1,5 +1,7 @@
 package week4.day1;
 
+import week8.Penguin;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -55,13 +57,20 @@ public class Ex2 {
 //    System.out.println(Arrays.toString(wallet));
 
     Arrays.sort(wallet, comparator);
+//      sort(new Penguin[] {null, null});
+      sort(new Integer[] {null, null});
+
+      Integer i1 = 5;
+      Number n1 = 10;
+//      System.out.println(i1.compareTo(n1));
+//      Prodecer and Consumer  PECS
   }
 
-  public static void sort(Comparable[] arr) {
+  public static <T extends Comparable<? super T>> void sort(T[] arr) {
     for (int i = 0; i < arr.length; i++) {
       for (int j = 0; j < arr.length - 1 - i; j++) {
         if (arr[j].compareTo(arr[j + 1]) > 0) {
-          Comparable temp = arr[j];
+          T temp = arr[j];
           arr[j] = arr[j + 1];
           arr[j + 1] = temp;
         }

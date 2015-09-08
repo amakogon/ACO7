@@ -20,7 +20,11 @@ public class TestBufferedReader {
       System.out.println(builder);
     } finally {
       if (reader != null) {
-        reader.close();
+          try {
+              reader.close();
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
       }
     }
 
